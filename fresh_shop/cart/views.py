@@ -118,9 +118,9 @@ def change_cart(request):
                     subtotal = Goods.objects.get(pk=goods_id).shop_price * se_goods[1]
                 # 修改选中状态
                 if goods_select:
-                    se_goods[2] = 0
-                else:
                     se_goods[2] = 1
+                else:
+                    se_goods[2] = 0
         # 保存修改
         request.session['goods'] = session_goods
         return JsonResponse({'code': 200, 'msg': '请求成功', 'subtotal': subtotal})

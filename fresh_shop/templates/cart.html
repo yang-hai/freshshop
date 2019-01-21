@@ -62,14 +62,14 @@
 				cart_price()
 			},
 			error:function(data){
-				alert('失败')
+
 			}
 		})
 	}
 	<!--改变选择状态-->
 	function change_select(id){
 		var csrf = $('input[name="csrfmiddlewaretoken"]').val()
-		var select = $('#goods_'+id+' input').attr('checked')
+		var select = $('#goods_'+id+' input').prop('checked')
 		$.ajax({
 			url: '/cart/change_cart/',
 			type:'POST',
@@ -78,9 +78,10 @@
 			dataType: 'json',
 			success:function(data){
 				if(select){
-					$('#goods_'+id+' input').removeAttr('checked')
+					$('#goods_'+id+' input').prop('checked', true)
+
 				}else{
-					$('#goods_'+id+' input').attr('checked', 'checked')
+					$('#goods_'+id+' input').removeProp('checked')
 				}
 				cart_price()
 			},

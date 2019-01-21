@@ -23,7 +23,7 @@ class AuthMiddleware(MiddlewareMixin):
             return None
         not_need_check = ['/user/register/', '/user/login/',
                           '/goods/index/', '/goods/detail/.*/',
-                          '/cart/.*/']
+                          '/cart/.*', '/static/.*/', '/media/.*/']
         for check_path in not_need_check:
             if re.match(check_path, path):
                 # 当前path路径不需要做登录校验的路由
